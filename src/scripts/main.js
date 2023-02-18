@@ -3,16 +3,12 @@ const inputQuestion = document.querySelector('#question'),
   generate = document.querySelector('#generare');
 
 generate.addEventListener('click', (e) => {
-  console.log(inputQuestion.value);
   sendQuestion();
 });
 
 const apiKey = import.meta.env.PUBLIC_CHATGPT_API_KEY;
 
 const sendQuestion = () => {
-  console.log('called');
-  console.log(import.meta.env.PUBLIC_CHATGPT_API_KEY);
-
   let fQuestion = inputQuestion.value;
 
   fetch('https://api.openai.com/v1/completions', {
