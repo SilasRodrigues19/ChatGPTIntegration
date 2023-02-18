@@ -1,6 +1,10 @@
 const inputQuestion = document.querySelector('#question'),
   result = document.querySelector('#result'),
-  generate = document.querySelector('#generare');
+  generate = document.querySelector('#generate');
+
+document.addEventListener('DOMContentLoaded', () => {
+  result.disabled = true;
+});
 
 generate.addEventListener('click', (e) => {
   sendQuestion();
@@ -11,6 +15,11 @@ const apiKey = import.meta.env.PUBLIC_CHATGPT_API_KEY;
 const sendQuestion = () => {
   let fQuestion = inputQuestion.value;
 
+  generate.innerText = 'Waiting...';
+  generate.disabled = true;
+
+  console.log(fQuestion);
+
   fetch('https://api.openai.com/v1/completions', {
     method: 'POST',
     headers: {
@@ -19,10 +28,10 @@ const sendQuestion = () => {
       Authorization: 'Bearer ' + apiKey,
     },
     body: JSON.stringify({
-      model: 'text-davinci-003',
+      model: import.meta.env.OPENAI_MODEL,
       prompt: fQuestion,
-      max_tokens: 2040, // response size
-      temperature: 0.5, // response creativity
+      max_tokens: import.meta.env.MAX_TOKENS, // response size
+      temperature: import.meta.env.TEMPERATURE, // response creativity
     }),
   })
     .then((res) => res.json())
@@ -33,7 +42,7 @@ const sendQuestion = () => {
       if (json.error?.message) {
         return (result.value += `Error: ${json.error.message}`);
       } else if (json.choices?.[0].text) {
-        var text = json.choices[0].text || 'Sem resposta';
+        var text = json.choices[0].text || 'No answer';
 
         result.value += '\n' + 'Chat GPT Completions v1: ' + text;
       }
@@ -42,8 +51,9 @@ const sendQuestion = () => {
     })
     .catch((error) => console.error(`Error: ${error}`))
     .finally(() => {
-      inputQuestion.value = '';
       inputQuestion.disabled = false;
+      generate.innerText = 'Send';
+      generate.disabled = false;
       inputQuestion.focus();
     });
 };

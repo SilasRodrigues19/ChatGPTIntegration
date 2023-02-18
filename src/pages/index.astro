@@ -7,14 +7,14 @@ import TextArea from '../components/TextArea.astro';
   <main
     class='flex items-center justify-center flex-col w-full min-h-screen h-full'
   >
-    <TextArea name='question' placeholder='Pergunta' />
+    <TextArea name='question' placeholder='Question' />
     <button
-      id='generare'
-      class='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded my-3 focus:outline-none focus:shadow-outline'
-      >Enviar</button
+      id='generate'
+      class='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded my-3 focus:outline-none focus:shadow-outline disabled:bg-gray-500 disabled:cursor-not-allowed'
+      >Send</button
     >
 
-    <TextArea name='result' placeholder='Resultado' />
+    <TextArea name='result' placeholder='Answer' />
   </main>
 </Layout>
 
