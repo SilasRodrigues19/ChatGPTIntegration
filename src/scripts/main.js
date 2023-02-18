@@ -10,7 +10,10 @@ generate.addEventListener('click', (e) => {
   sendQuestion();
 });
 
-const apiKey = import.meta.env.PUBLIC_CHATGPT_API_KEY;
+const API_KEY = import.meta.env.PUBLIC_CHATGPT_API_KEY;
+const OPENAI_MODEL = import.meta.env.PUBLIC_OPENAI_MODEL;
+const MAX_TOKENS = import.meta.env.PUBLIC_MAX_TOKENS;
+const TEMPERATURE = import.meta.env.PUBLIC_TEMPERATURE;
 
 const sendQuestion = () => {
   let fQuestion = inputQuestion.value;
@@ -18,20 +21,20 @@ const sendQuestion = () => {
   generate.innerText = 'Waiting...';
   generate.disabled = true;
 
-  console.log(fQuestion);
+  console.log(fQuestion, OPENAI_MODEL, MAX_TOKENS, TEMPERATURE);
 
   fetch('https://api.openai.com/v1/completions', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + apiKey,
+      Authorization: 'Bearer ' + API_KEY,
     },
     body: JSON.stringify({
-      model: import.meta.env.OPENAI_MODEL,
+      model: OPENAI_MODEL,
       prompt: fQuestion,
-      max_tokens: import.meta.env.MAX_TOKENS, // response size
-      temperature: import.meta.env.TEMPERATURE, // response creativity
+      max_tokens: MAX_TOKENS, // response size
+      temperature: TEMPERATURE, // response creativity
     }),
   })
     .then((res) => res.json())

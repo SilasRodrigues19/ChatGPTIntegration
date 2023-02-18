@@ -1,8 +1,8 @@
 interface ImportMetaEnv {
   readonly PUBLIC_CHATGPT_API_KEY: string;
-  readonly OPENAI_MODEL: string;
-  readonly MAX_TOKENS: number;
-  readonly TEMPERATURE: number;
+  readonly PUBLIC_OPENAI_MODEL: string;
+  readonly PUBLIC_MAX_TOKENS: number;
+  readonly PUBLIC_TEMPERATURE: number;
 }
 
 interface ImportMeta {
