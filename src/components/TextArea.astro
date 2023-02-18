@@ -1,0 +1,17 @@
+---
+export interface Props {
+  name: string;
+  placeholder: string;
+}
+
+const { name, placeholder } = Astro.props;
+---
+
+<textarea
+  name={name}
+  id={name}
+  placeholder={placeholder}
+  cols='30'
+  rows='10'
+  class='w-full max-w-lg mx-3 bg-gray-400 resize-none border-gray-600 border-4 rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder:text-gray-500'
+></textarea>
