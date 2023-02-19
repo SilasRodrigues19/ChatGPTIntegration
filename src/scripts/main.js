@@ -33,8 +33,8 @@ const sendQuestion = () => {
     body: JSON.stringify({
       model: OPENAI_MODEL,
       prompt: fQuestion,
-      max_tokens: MAX_TOKENS, // response size
-      temperature: TEMPERATURE, // response creativity
+      max_tokens: Number(MAX_TOKENS), // response size
+      temperature: Number(TEMPERATURE), // response creativity
     }),
   })
     .then((res) => res.json())
