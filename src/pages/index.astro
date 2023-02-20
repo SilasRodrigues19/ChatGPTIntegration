@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TextArea from '../components/TextArea.astro';
+import Sekeleton from '../components/Skeleton.astro';
+import Skeleton from '../components/Skeleton.astro';
 ---
 
 <Layout title='GPT-3 Chat with Natural Language.'>
@@ -14,7 +16,8 @@ import TextArea from '../components/TextArea.astro';
       >Send</button
     >
 
-    <TextArea name='result' placeholder='Answer' />
+    <TextArea name='result' placeholder='' />
+    <Skeleton id='skeleton' />
   </main>
 </Layout>
 

@@ -1,0 +1,45 @@
+---
+export interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<section
+  id={id}
+  role='status'
+  class='space-y-2.5 animate-pulse w-full max-w-lg mx-3 py-2 px-3 absolute bottom-20'
+>
+  <div class='flex items-center w-full space-x-2 h-6'>
+    <div class='h-2.5 bg-gray-100 rounded-full dark:bg-[#d8d8d8] w-32'></div>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-24'></div>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-full'></div>
+  </div>
+  <div class='flex items-center w-full space-x-2 h-6 max-w-[480px]'>
+    <div class='h-2.5 bg-gray-100 rounded-full dark:bg-[#d8d8d8] w-full'></div>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-full'></div>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-full'></div>
+  </div>
+  <div class='flex items-center w-full space-x-2 h-6 max-w-[400px]'>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-full'></div>
+    <div class='h-2.5 bg-gray-100 rounded-full dark:bg-[#d8d8d8] w-80'></div>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-full'></div>
+  </div>
+  <div class='flex items-center w-full space-x-2 h-6 max-w-[480px]'>
+    <div class='h-2.5 bg-gray-100 rounded-full dark:bg-[#d8d8d8] w-full'></div>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-full'></div>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-24'></div>
+  </div>
+  <div class='flex items-center w-full space-x-2 h-6 max-w-[440px]'>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-32'></div>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-24'></div>
+    <div class='h-2.5 bg-gray-100 rounded-full dark:bg-[#d8d8d8] w-full'></div>
+  </div>
+  <div class='flex items-center w-full space-x-2 h-6 max-w-[360px]'>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-full'></div>
+    <div class='h-2.5 bg-gray-100 rounded-full dark:bg-[#d8d8d8] w-80'></div>
+    <div class='h-2.5 bg-gray-700 rounded-full dark:bg-[#bfbfbf] w-full'></div>
+  </div>
+  <span class='sr-only'>Loading...</span>
+</section>

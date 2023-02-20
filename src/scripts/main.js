@@ -1,13 +1,15 @@
 const inputQuestion = document.querySelector('#question'),
   result = document.querySelector('#result'),
-  generate = document.querySelector('#generate');
+  generate = document.querySelector('#generate'),
+  skeleton = document.querySelector('#skeleton');
+
+const toggleSkeletonVisibility = () => {
+  skeleton.classList.toggle('hidden');
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   result.disabled = true;
-});
-
-generate.addEventListener('click', (e) => {
-  sendQuestion();
+  toggleSkeletonVisibility();
 });
 
 const API_KEY = import.meta.env.PUBLIC_CHATGPT_API_KEY;
@@ -17,10 +19,10 @@ const TEMPERATURE = import.meta.env.PUBLIC_TEMPERATURE;
 
 const sendQuestion = () => {
   let fQuestion = inputQuestion.value;
-
+  result.value = '';
   generate.innerText = 'Waiting...';
   generate.disabled = true;
-
+  toggleSkeletonVisibility();
   console.log(fQuestion, OPENAI_MODEL, MAX_TOKENS, TEMPERATURE);
 
   fetch('https://api.openai.com/v1/completions', {
@@ -39,7 +41,7 @@ const sendQuestion = () => {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json);
+      console.table(json);
       result.value && result.value + '\n';
 
       if (json.error?.message) {
@@ -48,6 +50,7 @@ const sendQuestion = () => {
         var text = json.choices[0].text || 'No answer';
 
         result.value += '\n' + 'Chat GPT Completions v1: ' + text;
+        toggleSkeletonVisibility();
       }
 
       result.scrollTop = result.scrollHeight;
@@ -60,3 +63,5 @@ const sendQuestion = () => {
       inputQuestion.focus();
     });
 };
+
+generate.addEventListener('click', sendQuestion);
